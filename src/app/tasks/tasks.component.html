@@ -1,0 +1,33 @@
+
+<ol class="task-list">
+  @for (task of filteredTasks; track task.id; let i = $index) {
+    <li class="task-item" 
+        [class.completed]="task.complete"
+        (click)="toggleTaskState(task)">
+    
+
+      <!-- Основное содержимое задачи -->
+      <div class="task-content task-list">
+        <div class="task-header">
+          @if (task.complete) {
+            <s class="task-title">{{ task.name }}</s>
+          } @else {
+            <span class="task-title">{{ task.name }}</span>
+          }
+          <span class="task-id">#{{ task.id }}</span>
+        </div>
+        
+        <div class="task-meta">
+          <span class="task-date">
+             {{ task.date.toDateString()}} 
+          </span>
+          @if (task.userName) {
+            <span class="task-user">
+               {{ task.userName }}
+            </span>
+          }
+        </div>
+      </div>
+    </li>
+  }
+</ol>
